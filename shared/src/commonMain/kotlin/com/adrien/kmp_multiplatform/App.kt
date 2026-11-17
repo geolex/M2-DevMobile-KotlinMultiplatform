@@ -1,0 +1,63 @@
+package com.adrien.kmp_multiplatform
+
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.adrien.kmp_multiplatform.di.apiModule
+import com.adrien.kmp_multiplatform.di.initKoin
+import com.adrien.kmp_multiplatform.di.viewModelModule
+import com.amonteiro.a09_ynov_lyon_android.presentation.ui.AppNavigation
+import com.amonteiro.a09_ynov_lyon_android.presentation.ui.theme.AppTheme
+import org.jetbrains.compose.resources.painterResource
+
+import kmpmultiplatform.shared.generated.resources.Res
+import kmpmultiplatform.shared.generated.resources.compose_multiplatform
+import kmpmultiplatform.shared.generated.resources.error
+import org.koin.compose.KoinApplication
+
+@Composable
+@Preview
+fun App() {
+    KoinApplication(application = {
+        modules(apiModule, viewModelModule)
+    }) {
+        AppTheme {
+            var showContent by remember { mutableStateOf(false) }
+            AppNavigation()
+            /*
+        Column(
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.primaryContainer)
+                .safeContentPadding()
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Button(onClick = { showContent = !showContent }) {
+                Text("Click me!")
+            }
+            AnimatedVisibility(showContent) {
+                val greeting = remember { Greeting().greet() }
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Image(painterResource(Res.drawable.compose_multiplatform), null)
+                    Image(painterResource(Res.drawable.error), null)
+                    Text("Compose: $greeting")
+                }
+            }
+        }*/
+        }
+    }
+}
